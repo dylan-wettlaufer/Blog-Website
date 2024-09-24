@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Dylan's Blog</title>
+</head>
+<body>
+    <% if (locals.blog) { %>
+        <h1>Edit Post</h1>
+        <div class="create-text">
+            <form action="/resubmit" method="POST">
+                <label class="edit-label" for="title">Title:</label>
+                <input class="input-title" type="text" id="title" name="title" required value="<%= title %>"><br><br>
+                <label for="blog"></label>
+                <textarea class="input-blog" id="blog" name="blog" rows="5" cols="40" maxlength="500" required><%= blog %></textarea><br><br>
+                <input class="create-post" type="submit" value="Submit">
+        </div>
+        
+    <% } else { %>
+        <h1>Create Post</h1>
+        <div class="create-text">
+            <form action="/submit" method="POST">
+                <label class="edit-label" for="title">Title:</label>
+                <input class="input-title" type="text" id="title" name="title" required><br><br>
+                <label for="blog"></label>
+                <textarea class="input-blog" id="blog" name="blog" rows="5" cols="40" placeholder="Write your post here..." maxlength="500" required></textarea><br><br>
+                <input class="create-post" type="submit" value="Submit">
+        </div>
+        
+    <% } %>
+
+    
+    
+    
+</form>
+</body>
+</html>
+

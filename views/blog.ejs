@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Dylan's Blog</title>
+</head>
+<body>
+
+    <% if (locals.blog) { %>
+        <h1><%= title %></h1>
+       
+        <div class="blog-post">
+            <p><%= blog %></p>
+            <form action="/" method="GET">
+                <input class="create-post" type="submit" value="Exit">
+            </form>
+        </div>
+
+        <% } %>
+    
+</body>
+</html>

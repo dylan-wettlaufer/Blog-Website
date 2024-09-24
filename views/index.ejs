@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="blog-page title-post">
+        <h1>Dylan's Blog</h1>
+    <form action="/post" method="GET">
+        <input class="create-post" type="submit" value="Create Post">
+    </form>
+    </div>
+
+    <div class="blog-page">
+        <% if (locals.blog) { %>
+            <% var count = 0; %>
+            <% blog.forEach(post => { %>
+                <% post.id = count; %>
+                <% count++; %>
+                <div class="blog-post">
+    
+                    <form action="/blog/<%= post.id %>" method = "POST">
+                        <button class="blog-title" type="submit"><h2 class="blog-title-text"><%= post.title %></h2></button>
+                    </form>
+                    <% const now = new Date(); %>
+                    <% const year = now.getFullYear(); %>
+                    <% const month = now.getMonth() + 1; %>
+                    <% const day = now.getDate(); %>
+                    <h3 class="date"><%= `${year}-${month}-${day}` %></h3>
+    
+                    <form action="/edit/<%= post.id %>" method="POST" >
+                        <input class="edit" type="submit" value="Edit">
+                    </form>
+                    
+                    <form action="/delete/<%= post.id %>" method="POST">
+                        <input class="delete" type="submit" value="Delete">
+                    </form>
+                    
+                </div>
+                
+             <% }) %>   
+    
+         <% } %>   
+        
+    </div>
+    
+
+
+</body>
+</html>
