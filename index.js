@@ -1,8 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-mongoose.connect('mongodb+srv://dylanwett11:Raptors2019!@BlogCluster.7prwm.mongodb.net/?retryWrites=true&w=majority&appName=BlogCluster');
+dotenv.config();
+
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_NAME}:${process.env.MONGODB_PASSWORD}@BlogCluster.7prwm.mongodb.net/?retryWrites=true&w=majority&appName=BlogCluster`);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
